@@ -26,6 +26,7 @@ def read_data(file_name):
                 data[key].append(number)
     return data
 def selection_sort(numbers, direction='asc'):
+    #slozitost on na druhou
     n = len(numbers)
     for i in range(n):
         index = i
@@ -47,10 +48,20 @@ def bubble_sort(numbers):
             if numbers[j] > numbers[j + 1]:
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
     return numbers
+def insertion_sort(numbers):
+    for i in range(1, len(numbers)):
+        key = numbers[i]
+        j = i - 1
+        while j >= 0 and numbers[j] > key:
+            numbers[j + 1] = numbers[j]
+            j -= 1
+        numbers[j + 1] = key
+    return numbers
 def main():
     my_data = read_data("numbers.csv")
     print(my_data)
     print(selection_sort(my_data["series_1"]))
     print(bubble_sort(my_data["series_1"]))
+    print(insertion_sort(my_data["series_3"]))
 if __name__ == '__main__':
     main()
